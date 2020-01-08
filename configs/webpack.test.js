@@ -9,6 +9,9 @@ const { define } = require('./config')('test');
 
 module.exports = merge(baseConfig, {
   devtool: "cheap-module-source-map",
+  output: {
+    publicPath: 'https://test.www.baidu.com/'
+  },
   module: {
     rules: [
       {
@@ -25,7 +28,7 @@ module.exports = merge(baseConfig, {
             loader: MiniCssExtractPlugin.loader,
             options: {
               minimize: true,
-              publicPath: 'https://www.baidu.com'
+              // publicPath: 'https://www.baidu.com'
             }
           },
           'css-loader?modules',

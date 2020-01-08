@@ -5,13 +5,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const { define } = require('./config')('prod');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { define } = require('./config')('prod');
 
 module.exports = merge(baseConfig, {
   devtool: "cheap-module-source-map",
   output: {
-    // publicPath: 'https://www.baidu.com/'
+    publicPath: 'https://www.baidu.com/'
   },
   module: {
     rules: [
