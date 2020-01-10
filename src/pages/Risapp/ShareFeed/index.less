@@ -1,0 +1,151 @@
+.risApp {
+  min-height: 100vh;
+  padding   : 20px 0 60px;
+  font-size : 13px;
+  color     : #333333;
+  background: #F7F7F7;
+
+  .risDownload {
+    width       : 100%;
+    height      : 60px;
+    display     : flex;
+    padding-left: 10px;
+    align-items : center;
+    background  : #FFDF34;
+    position    : fixed;
+    bottom      : 0;
+    z-index     : 1000;
+
+    .downLoadIcon {
+      width          : 42px;
+      height         : 42px;
+      margin-right   : 5px;
+      background     : #eee;
+      background-size: 100% 100%;
+      border-radius  : 50%;
+    }
+
+    .downLoadDesc {
+      max-width  : calc(100% - 20px - 42px - 95px);
+      word-break : break-all;
+      line-height: 20px;
+    }
+
+    .downLoadBtn {
+      width          : 95px;
+      height         : 50px;
+      background     : url('../../assets/downlaod.png');
+      background-size: 100% 100%;
+      border-radius  : 8px;
+      position       : absolute;
+      right          : 0;
+    }
+  }
+
+  .item {
+    padding      : 10px 0 0;
+    margin-bottom: 7px;
+    background   : #fff;
+  }
+
+  .title {
+    display      : flex;
+    padding      : 0 9px;
+    margin-bottom: 7px;
+    align-items  : center;
+    position     : relative;
+
+    .authorIcon {
+      width          : 33px;
+      height         : 33px;
+      margin-right   : 7px;
+      border-radius  : 50%;
+      background-size: 100% 100%;
+    }
+
+    .authorName {
+      // max-width  : 140px;
+      // white-space: nowrap;
+      // /* 规定文本是否折行 */
+      // overflow: hidden;
+      // /* 规定超出内容宽度的元素隐藏 */
+      // text-overflow: ellipsis;
+    }
+
+    .goDownload {
+      width             : 60px;
+      height            : 20px;
+      // line-height    : 20px;
+      margin-left       : 5px;
+      display           : flex;
+      justify-content   : center;
+      align-items       : center;
+      background        : rgba(255, 223, 52, 1);
+      border-radius     : 10px;
+      font-size         : 12px;
+      text-align        : center;
+      position          : absolute;
+      right             : 9px;
+    }
+  }
+
+
+  .discription {
+    padding           : 0 9px;
+    margin-bottom     : 10px;
+    word-break        : break-all;
+    font-size         : 15px;
+    line-height       : 20px;
+    // height         : 40px;
+    overflow          : hidden;
+    text-overflow     : ellipsis;
+    display           : -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .share {
+    height     : 40px;
+    padding    : 0 10px;
+    display    : flex;
+    align-items: center;
+    font-size  : 14px;
+
+    .shareIcon {
+      width      : 26px;
+      height     : 26px;
+      margin-left: 20px;
+    }
+  }
+
+  .videoStyle {
+    width     : 100%;
+    height    : 264px;
+    max-height: 1000px;
+  }
+
+  .modalStyle {
+    width          : 100%;
+    height         : 264px;
+    max-height     : 1000px;
+    display        : none;
+    align-items    : center;
+    justify-content: center;
+    position       : absolute;
+    top            : 0;
+    background     : rgba(0, 0, 0, 0.8);
+    z-index        : 999;
+
+    .modalDiv {
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+    }
+
+    .videoShare {
+      width       : 43px;
+      height      : 43px;
+      margin-right: 16px;
+    }
+  }
+}

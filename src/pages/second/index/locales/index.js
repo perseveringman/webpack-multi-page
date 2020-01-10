@@ -3,12 +3,12 @@ import en from './en-US';
 import es from './es-MX';
 import pt from './pt-BR';
 export function getLocale () {
-  return localStorage.getItem('funny_web_locale');
+  return localStorage.getItem('outside_web_locale');
 }
 export function setLocale (lang) {
   const locale = getLocale();
   if (locale !== lang) {
-    localStorage.setItem('funny_web_locale', lang);
+    localStorage.setItem('outside_web_locale', lang);
     window.location.reload();
   }
 }
