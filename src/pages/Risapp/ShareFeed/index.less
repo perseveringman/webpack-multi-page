@@ -1,24 +1,113 @@
 .risApp {
-  min-height: 100vh;
-  padding   : 20px 0 60px;
-  font-size : 13px;
-  color     : #333333;
-  background: #F7F7F7;
+  min-height   : 100vh;
+  // padding   : 20px 0 60px;
+  font-size    : 13px;
+  color        : #333333;
+  background   : #F7F7F7;
+  display: flex;
+  flex-direction: column;
+  :global {
+    .am-carousel {
+      position: relative;
+    }
+    .am-carousel-wrap {
+      font-size: 18px;
+      color: #000;
+      background: none;
+      text-align: center;
+      zoom: 1;
+      width: 100%;
+    }
+    .am-carousel-wrap-dot {
+      display: inline-block;
+      zoom: 1;
+    }
+    .am-carousel-wrap-dot > span {
+      display: block;
+      width: 8px;
+      height: 8px;
+      margin: 0 3px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+    .am-carousel-wrap-dot-active > span {
+      background: #888;
+    }
+    
+  }
+  .carousel {
+    width     : 100%;
+    height    : 43px;
+    background: #FFDF34;
+    position  : relative;
+
+    .swiper {
+      width : calc(~"100% - 67px");
+      height: 43px;
+
+      .swiperIcon {
+        width   : 43px;
+        height  : 35px;
+        margin  : 0 10px 0 7px;
+        position: relative;
+
+        &>img {
+          width : 43px;
+          height: 35px;
+        }
+
+        .play {
+          width        : 12px;
+          height       : 12px;
+          background   : rgba(0, 0, 0, 0.4);
+          border-radius: 50%;
+          position     : absolute;
+          top          : calc(~"50% - 6px");
+          left         : calc(~"50% - 6px");
+          z-index      : 10;
+
+          &::after {
+            content        : '';
+            display        : block;
+            width          : 5px;
+            height         : 6px;
+            background     : url('../../../assets/Risapp/ShareFeed/start.png');
+            background-size: 100% 100%;
+            position       : absolute;
+            top            : calc(~"50% - 3px");
+            left           : calc(~"50% - 4px");
+            z-index        : 11;
+          }
+        }
+      }
+    }
+
+    .inviteMore {
+      width        : 47px;
+      height       : 20px;
+      text-align   : center;
+      background   : #fff;
+      border-radius: 10px;
+      position     : absolute;
+      right        : 10px;
+      top          : 12px;
+    }
+  }
 
   .risDownload {
-    width       : 100%;
-    height      : 60px;
-    display     : flex;
-    padding-left: 10px;
-    align-items : center;
-    background  : #FFDF34;
-    position    : fixed;
-    bottom      : 0;
-    z-index     : 1000;
+    // width          : 100%;
+    height         : 30px;
+    display        : flex;
+    padding-left   : 10px;
+    align-items    : center;
+    background     : #F5C031;
+    // position    : fixed;
+    // bottom      : 0;
+    // z-index     : 1000;
 
     .downLoadIcon {
-      width          : 42px;
-      height         : 42px;
+      width          : 27px;
+      height         : 27px;
       margin-right   : 5px;
       background     : #eee;
       background-size: 100% 100%;
@@ -26,15 +115,15 @@
     }
 
     .downLoadDesc {
-      max-width  : calc(100% - 20px - 42px - 95px);
-      word-break : break-all;
-      line-height: 20px;
+      // max-width  : calc(~"100% - 20px - 42px - 95px");
+      word-break    : break-all;
+      line-height   : 20px;
     }
 
     .downLoadBtn {
-      width          : 95px;
-      height         : 50px;
-      background     : url('../../assets/downlaod.png');
+      width          : 57px;
+      height         : 31px;
+      background     : url('../../../assets/Risapp/ShareFeed/download.png');
       background-size: 100% 100%;
       border-radius  : 8px;
       position       : absolute;
@@ -43,9 +132,9 @@
   }
 
   .item {
-    padding      : 10px 0 0;
-    margin-bottom: 7px;
-    background   : #fff;
+    // padding      : 10px 0 0;
+    margin-bottom   : 7px;
+    background      : #fff;
   }
 
   .title {
@@ -91,17 +180,46 @@
 
 
   .discription {
-    padding           : 0 9px;
-    margin-bottom     : 10px;
-    word-break        : break-all;
-    font-size         : 15px;
-    line-height       : 20px;
-    // height         : 40px;
-    overflow          : hidden;
-    text-overflow     : ellipsis;
-    display           : -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    padding: 7px 9px 0;
+    display: flex;
+
+    p {
+      width                   : 90%;
+      // margin-bottom        : 10px;
+      word-break              : break-all;
+      font-size               : 14px;
+      line-height             : 20px;
+      // height               : 40px;
+      overflow                : hidden;
+      text-overflow           : ellipsis;
+      display                 : -webkit-box;
+      -webkit-line-clamp      : 1;
+      -webkit-box-orient      : vertical;
+    }
+
+    .showExpend {
+      -webkit-line-clamp: unset;
+    }
+
+    .open {
+      width          : 10px;
+      height         : 6px;
+      background     : url('../../../assets/Risapp/ShareFeed/open.png');
+      background-size: 100% 100%;
+      margin-left    : 10px;
+      position       : relative;
+      top            : 7px;
+    }
+
+    .pack {
+      width          : 10px;
+      height         : 6px;
+      background     : url('../../../assets/Risapp/ShareFeed/pack.png');
+      background-size: 100% 100%;
+      margin-left    : 10px;
+      position       : relative;
+      top            : 7px;
+    }
   }
 
   .share {
@@ -110,6 +228,7 @@
     display    : flex;
     align-items: center;
     font-size  : 14px;
+    color      : #666666;
 
     .shareIcon {
       width      : 26px;
@@ -146,6 +265,71 @@
       width       : 43px;
       height      : 43px;
       margin-right: 16px;
+    }
+  }
+
+  .moreDiv {
+    background: #fff;
+
+    .hotTitle {
+      text-align     : center;
+      font-size      : 16px;
+      color          : #333333;
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+
+      &>img {
+        width       : 13px;
+        height      : 15px;
+        margin-right: 6px;
+      }
+    }
+
+    .hotMain {
+      padding        : 7px 10px;
+      display        : flex;
+      flex-wrap      : wrap;
+      justify-content: space-between;
+
+      .hotItem {
+        width           : calc(~"50% - 4px");
+        height          : 107px;
+        margin-bottom   : 7px;
+        border-radius   : 7px;
+        position        : relative;
+        // border       : 1px solid rgba(151, 151, 151, 1);
+
+        .openRisapp {
+          width        : 100%;
+          height       : 107px;
+          border-radius: 7px;
+        }
+
+        .play {
+          width        : 40px;
+          height       : 40px;
+          background   : rgba(0, 0, 0, 0.4);
+          border-radius: 50%;
+          position     : absolute;
+          top          : calc(~"50% - 20px");
+          left         : calc(~"50% - 20px");
+          z-index      : 10;
+
+          &::after {
+            content        : '';
+            display        : block;
+            width          : 18px;
+            height         : 20px;
+            background     : url('../../../assets/Risapp/ShareFeed/start.png');
+            background-size: 100% 100%;
+            position       : absolute;
+            top            : calc(~"50% - 10px");
+            left           : calc(~"50% - 7px");
+            z-index        : 11;
+          }
+        }
+      }
     }
   }
 }

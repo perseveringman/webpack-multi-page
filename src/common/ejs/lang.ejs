@@ -23,5 +23,11 @@
     return null;
   }
   var lang = getQueryString('lang') || 'es-MX';
-  localStorage.setItem('outside_web_locale', lang);
+  const langMap = {
+    'zh': 'zh-CN',
+    'en': 'en-US',
+    'es': 'es-MX',
+    'pt': 'pt-BR'
+  }
+  localStorage.setItem('outside_web_locale', langMap[lang.slice(0, 2)]);
 </script>

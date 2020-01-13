@@ -19,7 +19,14 @@ const config = merge(baseConfig, {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },
           'postcss-loader'
         ],
       },
@@ -27,30 +34,69 @@ const config = merge(baseConfig, {
         test: /\.less$/,
         use: [
           'style-loader',
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },
           'postcss-loader',
-          'less-loader'
+          'less-loader',
         ],
       },
       {
         test: /\.scss$/,
         use: [
           'style-loader',
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },
           'postcss-loader',
-          'sass-loader'
+          'sass-loader',
         ],
       },
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     'style-loader',
+      //     'postcss-loader',
+      //     'sass-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //         importLoaders: 1,
+      //         localIdentName: '[name]_[local]_[hash:base64]',
+      //         sourceMap: true
+      //       }
+      //     },
+      //   ],
+      // },
       {
         test: /\.(gif|png|jpe?g|eot|woff|ttf|pdf)$/,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              outputPath: '/'
+            },
+          },
+        ],
       },
     ]
   },
   devServer: {
     port: '8008',
     hot: true,
-    contentBase: path.resolve(__dirname, "../src"),
+    // contentBase: path.resolve(__dirname, "../dist"),
     proxy,
   },
   plugins: [

@@ -1,6 +1,6 @@
 import Fly from 'flyio/dist/npm/fly'
 import qs from 'qs'
-import getConfig from '../../configs/config'
+import getConfig from 'configs/config'
 const { proxy } = getConfig(process.env.type)
 
 const request = new Fly()

@@ -11,7 +11,7 @@ const { define } = require('./config')('prod');
 module.exports = merge(baseConfig, {
   devtool: "cheap-module-source-map",
   output: {
-    publicPath: 'https://www.baidu.com/'
+    // publicPath: 'https://www.baidu.com/'
   },
   module: {
     rules: [
@@ -31,7 +31,14 @@ module.exports = merge(baseConfig, {
               minimize: true
             }
           },
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },
           'postcss-loader'
         ]
       },
@@ -44,7 +51,14 @@ module.exports = merge(baseConfig, {
               minimize: true
             }
           },
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },
           'postcss-loader',
           'less-loader',
         ],
@@ -53,7 +67,14 @@ module.exports = merge(baseConfig, {
         test: /\.scss$/,
         use: [
           'style-loader',
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },
           'postcss-loader',
           'sass-loader'
         ],
@@ -65,7 +86,7 @@ module.exports = merge(baseConfig, {
             loader: 'url-loader',
             options: {
               limit: 8192, // 单位是 Byte，当文件小于 8KB 时作为 DataURL 处理
-              outputPath: 'image/',  // 图片文件输出的文件夹
+              outputPath: '/image/',  // 图片文件输出的文件夹
               name: '[name].[hash:8].[ext]'
             },
           },

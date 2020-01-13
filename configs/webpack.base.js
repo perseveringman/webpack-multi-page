@@ -28,28 +28,15 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        // include: [
-        //   path.resolve(__dirname, '../src'),
-        // ],
-        use: 'babel-loader',
-      },
       { test: /\.ejs$/, loader: 'ejs-loader' },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader'
-          },
-        ],
-      },
     ],
   },
   resolve: {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],
     alias: {
+      "configs": path.resolve(__dirname, './'),
       "src": path.resolve(__dirname, '../src'),
+      "@": path.resolve(__dirname, '../src'),
       "react": "preact/compat",
       "react-dom/test-utils": "preact/test-utils",
       "react-dom": "preact/compat"

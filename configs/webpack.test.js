@@ -31,7 +31,14 @@ module.exports = merge(baseConfig, {
               // publicPath: 'https://www.baidu.com'
             }
           },
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },,
           'postcss-loader'
         ]
       },
@@ -45,7 +52,14 @@ module.exports = merge(baseConfig, {
               publicPath: 'https://www.baidu.com'
             }
           },
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },,
           'postcss-loader',
           'less-loader',
         ],
@@ -54,7 +68,14 @@ module.exports = merge(baseConfig, {
         test: /\.scss$/,
         use: [
           'style-loader',
-          'css-loader?modules',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            }
+          },,
           'postcss-loader',
           'sass-loader'
         ],

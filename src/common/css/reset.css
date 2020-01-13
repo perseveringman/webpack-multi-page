@@ -1,49 +1,158 @@
-h1,h2,h3,h4,h5,h6,p {
-  margin: 0;
-  padding: 0
+html {
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  /* font-family: Helvetica; */
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
-
-* {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent;
-  outline: 0
-}
-
-body,button,dd,dl,dt,figcaption,figure,html,input,ol,textarea,ul {
-  margin: 0;
-  padding: 0;
-  border: 0
-}
-
-ol,ul {
-  list-style: none
+button, input {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
 
 body {
-  font-family: "Helvetica Neue",Helvetica,STHeiTi-Light,STHeiTi,sans-serif;
-  line-height: 1.5;
   font-size: 12px;
-  background: #fff;
-  color: #000;
-  word-wrap: break-word;
-  -webkit-text-size-adjust: none
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-weight: 400
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dd,
+ul,
+ol,
+pre,
+form,
+input,
+textarea,
+th,
+td,
+select {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  text-indent: 0;
 }
 
-a,a:visited {
-  text-decoration: none
+a,
+button,
+input,
+textarea,
+select {
+  background: none;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+em {
+  font-style: normal;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 img {
-  border: 0;
-  max-width: 100%
+  border: none;
+  vertical-align: top;
 }
 
 table {
-  width: auto;
   border-collapse: collapse;
-  border-spacing: 0
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+/* end reset */
+
+html,
+body {
+  max-width: 750px;
+  min-width: 320px;
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* iphonex 兼容方案
+https://aotu.io/notes/2017/11/27/iphonex/index.html */
+
+html,
+body,
+#root {
+  /* height: 100%; */
+  /* overflow: hidden; */
+}
+
+/* iphonex 安全区域 */
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #fff !important;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* iphonex fix底部元素适配 */
+:global(.fixed_bottom) {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  position: fixed;
+  z-index: 10;
+  background-color: #fff;
+}
+
+:global(.clearfix:after) {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* antd toast 样式定制 */
+:global(.am-toast-text) {
+  font-size: 16px;
+}
+
+:global(.am-toast > span) {
+  max-width: 90% !important;
+}
+
+/* 去掉img的默认边框 */
+img[src=""], img:not([src]){
+  opacity: 0;
 }

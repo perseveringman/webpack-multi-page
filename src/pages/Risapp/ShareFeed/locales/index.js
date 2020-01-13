@@ -5,14 +5,20 @@ import pt from './pt-BR';
 export function getLocale () {
   return localStorage.getItem('outside_web_locale');
 }
-export function setLocale (lang) {
+export function setLocale (lang = 'es-MX') {
   const locale = getLocale();
   if (locale !== lang) {
-    localStorage.setItem('outside_web_locale', lang);
+    const langMap = {
+      'zh': 'zh-CN',
+      'en': 'en-US',
+      'es': 'es-MX',
+      'pt': 'pt-BR'
+    }
+    localStorage.setItem('outside_web_locale', langMap[lang.slice(0, 2)]);
     window.location.reload();
   }
 }
-export function formatMessage (key) {
+export function formatMessage ({id: key}) {
   const locale = getLocale() || 'es-MX';
   switch(locale.slice(0, 2)) {
     case 'zh':
