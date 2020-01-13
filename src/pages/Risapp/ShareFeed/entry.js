@@ -3,10 +3,6 @@ import React, { Component, Fragment } from 'react';
 import ReactDOM from "react-dom";
 import { formatMessage } from './locales';
 import styles from './index.less';
-// import Carousel from 'antd-mobile/lib/carousel';  // 加载 JS
-// import Carousel from '@brainhubeu/react-carousel';
-// import '@brainhubeu/react-carousel/lib/style.css';
-// import 'antd-mobile/lib/carousel/style/css';
 import logo from '@/assets/Risapp/logo.png';
 import replayIcon from '@/assets/Risapp/ShareFeed/replay.png';
 import facebookIcon from '@/assets/Risapp/ShareFeed/facebook.png';
@@ -293,7 +289,6 @@ class ShareFeed extends Component {
               dotStyle={{ width: 3, height: 3, background: 'rgba(255,255,255,0.7)' }}
               dotActiveStyle={{ width: 6, height: 3, background: '#FFFFFF' }}
             >
-              
             </Carousel> */}
             {swiperData.map((val, key) => (
               <div style={{ height: 43, display: 'flex', alignItems: 'center' }} key={key}>
