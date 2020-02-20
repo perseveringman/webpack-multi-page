@@ -1,0 +1,33 @@
+<script>
+  // 多语言设置
+  function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+      if (name === 'lang') {
+        switch (unescape(r[2]).slice(0, 2)) {
+          case 'zh':
+            return 'zh-CN'
+          case 'en':
+            return 'en-US'
+          case 'es':
+            return 'es-MX'
+          case 'pt':
+            return 'pt-BR'
+          default:
+            return 'es-MX'
+        }
+      }
+      return unescape(r[2]);
+    }
+    return null;
+  }
+  var lang = getQueryString('lang') || 'es-MX';
+  const langMap = {
+    'zh': 'zh-CN',
+    'en': 'en-US',
+    'es': 'es-MX',
+    'pt': 'pt-BR'
+  }
+  localStorage.setItem('busmap_locale', langMap[lang.slice(0, 2)]);
+</script>

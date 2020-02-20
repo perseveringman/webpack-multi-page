@@ -1,0 +1,13 @@
+{
+  "name": "busmap_test",
+  "script": "./server.test.js",
+  "exec_mode" : "fork",
+  "watch": false,
+  "ignore_watch": ["tmp"],
+  "env": {
+    "PORT": 8097
+  },
+  "engines": {
+    "node": ">=10.13"
+  }
+}
