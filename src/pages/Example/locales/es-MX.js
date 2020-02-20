@@ -1,3 +1,4 @@
 export default {
-  'vote.index.tips': 'No se puede cambiar o cancelar después de votar'  
+  'example.title': 'Hola Mundo!',
+  'example.hello': 'Hola Mundo!',
 };

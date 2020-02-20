@@ -1,3 +1,4 @@
 export default {
-  'vote.index.tips': 'Cannot change or cancel after voting.'
+  'example.title': 'Hello World!',
+  'example.hello': 'Hello World!',
 };
