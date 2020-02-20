@@ -2,8 +2,8 @@
 专门为端外落地页面设计的框架，页面间独立，支持多语言，推荐使用框架内置preact开发，当然也可以使用别的技术栈。
 
 ## 快速开始
-npm install
-npm run dev
+npm install  
+npm run dev  
 打开localhost:8008开始开发
 
 ## 构建
