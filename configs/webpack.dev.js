@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base')
 const { proxy, define } = require('./config')('dev');
 const routes = require('./router.config');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 const config = merge(baseConfig, {
   devtool: "cheap-module-eval-source-map",
@@ -117,6 +118,7 @@ const config = merge(baseConfig, {
   plugins: [
     new webpack.DefinePlugin(define),
     new webpack.HotModuleReplacementPlugin(),
+    new OpenBrowserPlugin({ url: 'http://localhost:8008' }),
   ]
 })
 module.exports = config;

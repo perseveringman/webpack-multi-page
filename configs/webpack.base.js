@@ -10,7 +10,7 @@ function getEntry() {
           var name = filePath.match(/\/pages\/(.+)\/entry.js/);
           name = name[1];
           entry[name] = filePath;
-          console.log(filePath)
+          // console.log(filePath)
           htmlPluginArray.push(new HtmlWebpackPlugin({
             filename: './pages/' + name + '/index.html',
             template: path.resolve(__dirname, '../src/pages/' + name + '/index.ejs'),
