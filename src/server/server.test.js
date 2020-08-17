@@ -14,7 +14,7 @@ function setCustomCacheControl(res, cPath) {
 
 function getFileExtendingName(filename) {
   // 文件扩展名匹配正则
-  const reg = /\.[^\.]+$/;
+  const reg = /\.[^.]+$/;
   const matches = reg.exec(filename);
   if (matches) {
     return matches[0];

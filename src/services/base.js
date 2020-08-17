@@ -46,6 +46,7 @@ request.interceptors.response.use(
   (response, promise) => response.data,
   (err, promise) => {
     // 接口错误上报
+    // eslint-disable-next-line no-console
     console.log('接口错误', err);
     return promise.reject(err);
   },

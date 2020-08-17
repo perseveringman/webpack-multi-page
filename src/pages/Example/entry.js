@@ -9,7 +9,7 @@ document.title = formatMessage('example.title') || document.title;
 
 class Home extends Component {
   componentDidMount() {
-    getFeedByTopic({ date: '2019-11-10' }).then(res => console.log(res));
+    getFeedByTopic({ date: '2019-11-10' }).then();
   }
 
   render() {

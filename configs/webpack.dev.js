@@ -1,4 +1,3 @@
-const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
@@ -15,7 +14,8 @@ const config = merge(baseConfig, {
         // include: [
         //   path.resolve(__dirname, './src'),
         // ],
-        use: 'babel-loader',
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.css$/,

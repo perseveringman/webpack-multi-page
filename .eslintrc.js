@@ -20,10 +20,9 @@ module.exports = {
     'react',
   ],
   rules: {
-    'import/no-duplicates': 0,
-    'import/no-extraneous-dependencies': 0,
-    'arrow-parens': [2, 'as-needed'],
-    'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
+    'import/no-duplicates': 0,  // 解决preact import的error
+    'import/no-extraneous-dependencies': 0, // 解决preact import的error
+    'react/jsx-filename-extension': [1, { extensions: ['.js'] }], // 在js里写jsx
   },
   settings: {
     'import/resolver': 'webpack',

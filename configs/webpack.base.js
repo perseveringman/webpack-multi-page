@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const glob = require('glob');
 const routes = require('./router.config.js');
 
@@ -58,6 +59,8 @@ module.exports = {
     //   filename: 'index.html', // 配置输出文件名和路径
     //   template: path.resolve(__dirname, '../src/index.html'), // 配置文件模板
     // }),
+    new FriendlyErrorsWebpackPlugin(),
     ...htmlPluginArray,
   ],
+  stats: 'errors-only'
 };
