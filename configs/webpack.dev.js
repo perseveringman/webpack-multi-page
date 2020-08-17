@@ -1,13 +1,13 @@
-const path = require('path')
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const baseConfig = require('./webpack.base')
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const baseConfig = require('./webpack.base');
 const { proxy, define } = require('./config')('dev');
 const routes = require('./router.config');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 const config = merge(baseConfig, {
-  devtool: "cheap-module-eval-source-map",
+  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       {
@@ -25,11 +25,11 @@ const config = merge(baseConfig, {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]",
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-            }
+            },
           },
-          'postcss-loader'
+          'postcss-loader',
         ],
       },
       {
@@ -40,9 +40,9 @@ const config = merge(baseConfig, {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]",
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-            }
+            },
           },
           'postcss-loader',
           'less-loader',
@@ -56,9 +56,9 @@ const config = merge(baseConfig, {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]",
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-            }
+            },
           },
           'postcss-loader',
           'sass-loader',
@@ -88,12 +88,12 @@ const config = merge(baseConfig, {
             loader: 'file-loader',
             options: {
               name: '[path][name].[ext]',
-              outputPath: '/'
+              outputPath: '/',
             },
           },
         ],
       },
-    ]
+    ],
   },
   devServer: {
     port: '8008',
@@ -104,21 +104,22 @@ const config = merge(baseConfig, {
       rewrites: [
         {
           from: /./,
-          to: function(context) {
-            const currentRoute = routes.find(route => new RegExp(route.path).test(context.parsedUrl.pathname))
+          to: function to(context) {
+            const currentPath = context.parsedUrl.pathname;
+            const currentRoute = routes.find(route => new RegExp(route.path).test(currentPath));
             // console.log(currentRoute, context.parsedUrl.pathname)
-            if (/hot-update.json/.test(context.parsedUrl.pathname)) return context.parsedUrl.pathname // 因为会出现hot-update.json 待研究
-            return currentRoute ? currentRoute.component : '/pages/Dev404/index.html' // 路由地图
-          }
+            if (/hot-update.json/.test(currentPath)) return currentPath; // 因为会出现hot-update.json 待研究
+            return currentRoute ? currentRoute.component : '/pages/Dev404/index.html'; // 路由地图
+          },
         },
         // { from: /./, to: '/pages/Dev404/index.html' } // 路由地图
-      ]
-    }
+      ],
+    },
   },
   plugins: [
     new webpack.DefinePlugin(define),
     new webpack.HotModuleReplacementPlugin(),
     new OpenBrowserPlugin({ url: 'http://localhost:8008' }),
-  ]
-})
+  ],
+});
 module.exports = config;

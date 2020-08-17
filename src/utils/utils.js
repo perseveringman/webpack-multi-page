@@ -1,4 +1,5 @@
-import { parse, stringify } from 'qs';
+/* eslint-disable */
+import { parse } from 'qs';
 
 export function format(fmt, date) {
   date = new Date(date) || new Date();
@@ -23,16 +24,16 @@ export function format(fmt, date) {
 }
 
 // 按ascII码排序对象
-export function sort_ASCII(obj) {
-  var arr = new Array();
-  var num = 0;
-  for (var i in obj) {
+export function sortASCII(obj) {
+  const arr = new Array();
+  let num = 0;
+  for (let i in obj) {
     arr[num] = i;
     num++;
   }
-  var sortArr = arr.sort();
-  var sortObj = {};
-  for (var i in sortArr) {
+  const sortArr = arr.sort();
+  const sortObj = {};
+  for (let i in sortArr) {
     sortObj[sortArr[i]] = obj[sortArr[i]];
   }
   return sortObj;
@@ -40,12 +41,12 @@ export function sort_ASCII(obj) {
 
 export function parseQueryString(url) {
   url = url == null ? window.location.href : url
-  if (url.lastIndexOf('?') === -1 || url.lastIndexOf('?') === (url.length - 1)) return {}
+  if (url.lastIndexOf('?') === -1 || url.lastIndexOf('?') === (url.length - 1)) return {};
   var search = url.substring(url.lastIndexOf('?') + 1)
   if (!search) {
-    return {}
+    return {};
   }
-  return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+  return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
 }
 
 export function getQueryString(name) {

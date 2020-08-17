@@ -1,5 +1,5 @@
 module.exports = [
-  // { path: '/', component: '/pages/Example/index.html' },
-  { path: '/404', component: '/pages/NotFound/index.html' },
-  { path: '/example', component: '/pages/Example/index.html' },
-]
+  // { path: '/', component: '/pages/Example/index.html', dev: true },
+  { path: '/404', component: '/pages/Dev404/index.html', dev: true },
+  { path: '/example', component: '/pages/Example/index.html', dev: true },
+];

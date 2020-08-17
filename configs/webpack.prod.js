@@ -1,21 +1,21 @@
-const path = require('path')
-const merge = require('webpack-merge')
-const webpack = require('webpack')
-const baseConfig = require('./webpack.base')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require('path');
+const merge = require('webpack-merge');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const QiniuPlugin = require('qiniu-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const baseConfig = require('./webpack.base');
 const { define } = require('./config')('prod');
 
 module.exports = merge(baseConfig, {
-  devtool: "cheap-module-source-map",
+  devtool: 'cheap-module-source-map',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -32,19 +32,19 @@ module.exports = merge(baseConfig, {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              minimize: true
-            }
+              minimize: true,
+            },
           },
           {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]",
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-            }
+            },
           },
-          'postcss-loader'
-        ]
+          'postcss-loader',
+        ],
       },
       {
         test: /\.less$/,
@@ -52,16 +52,16 @@ module.exports = merge(baseConfig, {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              minimize: true
-            }
+              minimize: true,
+            },
           },
           {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]",
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-            }
+            },
           },
           'postcss-loader',
           'less-loader',
@@ -75,12 +75,12 @@ module.exports = merge(baseConfig, {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]",
+                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
-            }
+            },
           },
           'postcss-loader',
-          'sass-loader'
+          'sass-loader',
         ],
       },
       {
@@ -90,13 +90,13 @@ module.exports = merge(baseConfig, {
             loader: 'url-loader',
             options: {
               limit: 8192, // 单位是 Byte，当文件小于 8KB 时作为 DataURL 处理
-              outputPath: '/image/',  // 图片文件输出的文件夹
-              name: '[name].[hash:8].[ext]'
+              outputPath: '/image/', // 图片文件输出的文件夹
+              name: '[name].[hash:8].[ext]',
             },
           },
         ],
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin(define),
@@ -113,7 +113,7 @@ module.exports = merge(baseConfig, {
     //   path: 'xxx'
     // }),
     new BundleAnalyzerPlugin(),
-    new CopyWebpackPlugin(['src/server', 'configs/router.config.js'])
+    new CopyWebpackPlugin(['src/server', 'configs/router.config.js']),
   ],
   optimization: {
     minimizer: [
@@ -121,10 +121,10 @@ module.exports = merge(baseConfig, {
         parallel: true,
         cache: true,
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({}),
     ],
     runtimeChunk: {
-      name: 'manifest'
+      name: 'manifest',
     },
     moduleIds: 'hashed',
     splitChunks: {
@@ -138,9 +138,9 @@ module.exports = merge(baseConfig, {
           minSize: 0,
           minChunks: 2,
           priority: 1,
-          reuseExistingChunk: true
-        }
-      }
-    }
+          reuseExistingChunk: true,
+        },
+      },
+    },
   },
-})
+});
