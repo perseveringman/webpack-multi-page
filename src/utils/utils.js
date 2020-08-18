@@ -136,6 +136,10 @@ export function isiOS() {
   return !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 }
 
+export function isInApp() {
+  return false
+}
+
 export function deleteNullAttr(obj) {
   if (typeof obj !== 'object') {
     return {};
