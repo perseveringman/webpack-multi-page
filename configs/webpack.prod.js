@@ -127,20 +127,20 @@ module.exports = merge(baseConfig, {
       name: 'manifest',
     },
     moduleIds: 'hashed',
-    splitChunks: {
-      minSize: 30000,
-      cacheGroups: {
-        common: {
-          test: /\.m?js$/,
-          chunks: 'initial',
-          name: 'common',
-          filename: 'js/common.[contenthash:8].js',
-          minSize: 0,
-          minChunks: 2,
-          priority: 1,
-          reuseExistingChunk: true,
-        },
-      },
-    },
+    // splitChunks: {
+    //   minSize: 30000,
+    //   cacheGroups: {
+    //     common: {
+    //       test: /\.m?js$/,
+    //       chunks: 'initial',
+    //       name: 'common',
+    //       filename: 'js/common.[contenthash:8].js',
+    //       minSize: 0,
+    //       minChunks: 2,
+    //       priority: 1,
+    //       reuseExistingChunk: true,
+    //     },
+    //   },
+    // },
   },
 });
