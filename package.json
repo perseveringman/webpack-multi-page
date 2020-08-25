@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env BUILD_ENV=prod webpack --mode production && git add . && git commit -am 'build'",
+    "build": "cross-env BUILD_ENV=prod webpack --mode production && node ./configs/replaceCDN.js && git add . && git commit -am 'build'",
     "build:test": "cross-env BUILD_ENV=test webpack --mode production && git add . && git commit -am 'build:test'",
     "start": "cross-env BUILD_ENV=dev webpack-dev-server --mode development",
     "dev": "cross-env BUILD_ENV=dev webpack-dev-server --mode development"
@@ -58,6 +58,7 @@
     "postcss-px-to-viewport": "0.0.3",
     "postcss-url": "^8.0.0",
     "postcss-write-svg": "^3.0.1",
+    "prerender-spa-plugin": "^3.4.0",
     "qiniu-upload-plugin": "^1.2.9",
     "qiniu-upload-webpack-plugin": "^2.1.1",
     "qiniu-webpack-plugin": "^0.4.2",

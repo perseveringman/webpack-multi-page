@@ -8,14 +8,16 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const QiniuPlugin = require('qiniu-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PrerenderSpaPlugin = require('prerender-spa-plugin');
 const baseConfig = require('./webpack.base');
+const routes = require('./router.config.js');
 const { define } = require('./config')('prod');
 
 module.exports = merge(baseConfig, {
   devtool: 'cheap-module-source-map',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
+    publicPath: "//127.0.0.1:12349/",
   },
   module: {
     rules: [
@@ -112,8 +114,28 @@ module.exports = merge(baseConfig, {
     //   zone: 'Zone_z0',          //七牛zone，默认华东   华东:z0 华北:z1 华南:z2 北美:na0 新加坡:as0
     //   path: 'xxx'
     // }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new CopyWebpackPlugin(['src/server', 'configs/router.config.js']),
+    ...routes.filter(route => route.prerender).map(route => new PrerenderSpaPlugin({
+      // Required - The path to the webpack-outputted app to prerender.
+      staticDir: path.join(__dirname, '../dist'),
+      indexPath: path.join(__dirname, '../dist', route.component.substring(1)),
+      // Required - Routes to render.
+      routes: [route.component.replace('/index.html', '')],
+      server: {
+        port: 12349
+      },
+      // 可以将headless设置为false来debug
+      // renderer: new PrerenderSpaPlugin.PuppeteerRenderer({
+      //   headless: false,
+      // }),
+      postProcess(renderedRoute) {
+        // Optional - Allows you to customize the HTML and output path before
+        // writing the rendered contents to a file.
+        return renderedRoute;
+      },
+    }))
+    
   ],
   optimization: {
     minimizer: [
