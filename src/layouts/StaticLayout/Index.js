@@ -3,7 +3,7 @@ import '@/common/js/bridge';
 import React, { Component } from 'react';
 import Navigation from '@/components/Navigation/Index';
 import 'src/common/css/reset.css';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';  prerender和这个过渡效果冲突了
 import LocalStorage from 'localstorage';
 import { getCookie, isInApp } from '@/utils/utils';
 import styles from './Index.less';
@@ -37,8 +37,8 @@ export default PackagedComponent => {
 
     getBaseInfoResult(result) {
       // 处理拿到的baseinfo
-        // eslint-disable-next-line no-console
-        console.log(result);
+      // eslint-disable-next-line no-console
+      console.log(result);
       // 是否展示nav
       const getIsShowNav = () => {
         const noBarArr = []; // 不要头部
@@ -62,18 +62,17 @@ export default PackagedComponent => {
       const { ready, isShowNav, is100vh } = this.state;
       return (
         <div className={styles.container}>
-          <TransitionGroup appear key={window.location.pathname}>
-            <CSSTransition classNames="fade" timeout={300}>
-              <div className={styles.pageWrapper} style={{ height: is100vh ? '100vh' : 'auto' }}>
-                {ready && (
-                  <>
-                    <Navigation isShowNav={isShowNav} />
-                    <PackagedComponent {...this.props} {...this.state} />
-                  </>
-                )}
-              </div>
-            </CSSTransition>
-          </TransitionGroup>
+          <div className={styles.pageWrapper} style={{ height: is100vh ? '100vh' : 'auto' }}>
+            {ready && (
+              <>
+                <Navigation isShowNav={isShowNav} />
+                <PackagedComponent {...this.props} {...this.state} />
+              </>
+            )}
+          </div>
+          {/* <TransitionGroup appear key={window.location.pathname}>
+            <CSSTransition classNames="fade" timeout={300}></CSSTransition>
+          </TransitionGroup> */}
         </div>
       );
     }
